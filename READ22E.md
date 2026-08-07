@@ -6,16 +6,22 @@ THe Cheater function helps making that "seamless" fix, as an auxiliary boundary 
 --- 
 
 Engine  
-- The core Python script acts as an asset compiler (not a flat image renderer!)  
-- Freakishly aware of the dimensional geometry context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates)  
+- Single function call in a Python script, that effectively acts as a 2D or 3D asset compiler  
+- Dimensionally aware of geometry and context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates)  
 
 Pattern Options
-- Construction Grid
+- Cool Hexagons
+- CAND.TV Test Pattern
 - Multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds),
 - Paper (aka inject hardware-accelerated noise recipes)
+- Construction Grid
 
-Shapes
-- Cartesian Plane, Cube, Sphere, Hexagonal Prism, 4 Hexagonal Prisms (Paid)
+Cartesian Plane
+OR
+X,Y,Z 3D: Cube, Sphere, Hexagonal Prism.. even 4 Hexagonal Prisms, wow!
+- Pure math frequencies rather than tracking local 2D pixel coordinates. When the top face meets the right face along the cube edge, their shared points have matching 3D values. The modulo checks evaluate identically, causing the graph paper lines to seamlessly wrap around the corners.
 
 Output
-- Clean, human-readable, accessible (soon), low-co2 semantic .svg files (geometry separate from presentation by grouping shapes inside XML containers (<g>) and controlling colors and rendering profiles via modern embedded CSS classes)
+- Clean, human-readable, semantic .svg files
+- (geometry separate from presentation by grouping shapes inside XML containers (<g>) and controlling colors and rendering profiles via modern embedded CSS classes)
+- accessible (soon), low-co2 
