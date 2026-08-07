@@ -8,6 +8,10 @@ exactly how a clean engine architecture should be split. By decoupling the sorti
 The Innocent engine that outputs textures and can wrap them around shapes for you
 THe Cheater function helps making that "seamless" fix, as an auxiliary boundary problem-solver, helping "stitch" edges for known patterns
 
+Polymorphic Blueprint Hooking: The engine code doesn’t care what pattern you are rendering anymore. It just expects that any material class passed to it implements three core methods: .get_css_rules(), .get_xml_defs(), and .evaluate_pixel_class().
+
+Infinite Scale Without Code Bloat: If you want to add a fourth pattern (like a carbon fiber weave or a neon grid layout), you don't touch engine.py at all. You leave the core compiler safe and completely untouched, and just write a new tiny, isolated pattern class block at the bottom of patterns.py.
+
 --- 
 
 Engine  
@@ -15,7 +19,7 @@ Engine
 - Dimensionally aware of geometry and context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates)  
 
 Pattern Options
-- Cool Hexagons
+- Obsidian
 - CAND.TV Test Pattern
 - Multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds),
 - Paper (aka inject hardware-accelerated noise recipes) Fractal Noise Generator
