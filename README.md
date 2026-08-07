@@ -1,6 +1,8 @@
 # patterns
 It's a Procedural Vector Texture Recombobulator!
 
+The Power of <feBlend mode="multiply">: Rather than lazily slapping a gray overlay on top of our shapes, the engine uses matrix math blending 🌐. The light levels from the heightmap actively transform the underlying camouflage vector colors 🌐. Whites stay bright, while shadows darken the green and brown color values symmetrically, preserving the exact color identity underneath.
+
 exactly how a clean engine architecture should be split. By decoupling the sorting system and passing that operational control entirely to your layer, the core Python script transitions into a pure, mathematical 3D Vertex Projection and Geometric Code Compiler.
 
 The Innocent engine that outputs textures and can wrap them around shapes for you
