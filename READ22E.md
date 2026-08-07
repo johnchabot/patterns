@@ -15,7 +15,7 @@ Pattern Options
 - Cool Hexagons
 - CAND.TV Test Pattern
 - Multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds),
-- Paper (aka inject hardware-accelerated noise recipes)
+- Paper (aka inject hardware-accelerated noise recipes) Fractal Noise Generator
 - Construction Grid
 
 Cartesian Plane
