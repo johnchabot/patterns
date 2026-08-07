@@ -1,5 +1,20 @@
+# Add HoneycombPatternMaterial to your engine imports at the top
+from patterns import 
+
+
+
+
+
+
+
+
+
+
+
+
+
 import math
-from patterns import CamouflageMaterial, TarmacMaterial, GoldHexMaterial
+from patterns import CamouflageMaterial, TarmacMaterial, GoldHexMaterial, HoneycombPatternMaterial
 
 class UnifiedCanvasEngine:
     """
@@ -66,6 +81,17 @@ class UnifiedCanvasEngine:
 
             f.write('  </g>\n</svg>\n')
         print(f"[Engine] Successfully compiled asset profile to '{filename}'")
+
+# Inside your UnifiedCanvasEngine class, add this layout path condition:
+# ... (Previous GRID and HEX conditions remain unchanged) ...
+
+            # --- ROUTE C: HARDWARE-ACCELERATED NATIVE SVG TILED FILL ---
+            elif layout_mode == "TILED_FILL":
+                cls = material_instance.evaluate_pixel_class(0, 0, 1, 1)
+                f.write(f'    <!-- Single container canvas rectangle using the integrated background asset -->\n')
+                f.write(f'    <rect width="{self.width}" height="{self.height}" class="{cls}" />\n')
+
+            f.write('  </g>\n</svg>\n')
 
 # --- INITIALIZATION CONTROL LAYER ---
 if __name__ == "__main__":
