@@ -23,6 +23,52 @@ class CamouflageMaterial:
         if roll > 0.35: return "camo-macro"
         return "camo-base"
 
+class HoneycombPatternMaterial:
+    """Pattern 4: Seamless Honeycomb Matrix with Polish-Edge Gold Gradients"""
+    
+    def get_css_rules(self):
+        # We don't need complex sub-classes here because the fill pattern 
+        # manages its own internal polygon stroke styles natively!
+        return """
+            .honeycomb-canvas-fill {
+                fill: url(#honeycomb);
+            }
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- Gold gradient for honeycomb lines -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#462523;stop-opacity:1" />
+      <stop offset="22%" style="stop-color:#cb9b51;stop-opacity:1" />
+      <stop offset="45%" style="stop-color:#f6e27a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f6f2c0;stop-opacity:1" />
+      <stop offset="55%" style="stop-color:#f6e27a;stop-opacity:1" />
+      <stop offset="78%" style="stop-color:#cb9b51;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#462523;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Honeycomb pattern with gold gradient lines -->
+    <pattern id="honeycomb" x="0" y="0" width="40" height="69.28" patternUnits="userSpaceOnUse">
+      <rect width="40" height="69.28" fill="#000000"/>
+      <!-- Hexagon 1 -->
+      <polygon points="20,0 40,11.55 40,34.64 20,46.19 0,34.64 0,11.55"
+               fill="none" stroke="url(#goldGradient)" stroke-width="3"/>
+      <!-- Hexagon 2 (offset down) -->
+      <polygon points="40,34.64 60,46.19 60,69.28 40,80.83 20,69.28 20,46.19"
+               fill="none" stroke="url(#goldGradient)" stroke-width="3"/>
+      <!-- Hexagon 3 (offset up) -->
+      <polygon points="0,34.64 20,46.19 20,69.28 0,80.83 -20,69.28 -20,46.19"
+               fill="none" stroke="url(#goldGradient)" stroke-width="3"/>
+    </pattern>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        # Unused by the tiled fill mode, but kept for polymorphic blueprint parity
+        return "honeycomb-canvas-fill"
+
+
+
+
+
 class TarmacMaterial:
     """Pattern 2: Weathered Industrial Road Surface"""
     def get_css_rules(self):
