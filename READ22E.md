@@ -29,3 +29,18 @@ Frequency Separation Engine (Macro + Micro layers), the Quantization Pass, and g
 - Clean, human-readable, semantic .svg files (Semantic Shading via CSS Variables, The Depth Sort / Painter's Algorithm:, he Projection Matrix (3D to 2D):
 - (geometry separate from presentation by grouping shapes inside XML containers (<g>) and controlling colors and rendering profiles via modern embedded CSS classes)
 - accessible (soon), low-co2 
+
+[CAMOUFLAGE ENGINE CORE]
+ │
+ ├── 1. Spatial Generation Subsystem (The Architecture)
+ │    ├── Deterministic Pseudo-Random Seed
+ │    ├── Fractal Brownian Motion (fBm) Loop
+ │    └── Quantization / Pixel Snapping Function
+ │
+ ├── 2. Structural Tuning Parameters (The Mathematical Scales)
+ │    ├── Macro-Frequency (Distance Blending / Silhouette Breakup)
+ │    └── Micro-Frequency (Close-Range / Texture Simulation)
+ │
+ └── 3. Edge Manipulation Layer (The Dither Engine)
+      ├── Sharp/Stark Hard Boundaries (Maximum Disruption)
+      └── Spatial Jitter / Bayer Matrix (Perceptual Blending)
