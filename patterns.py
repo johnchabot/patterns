@@ -1,3 +1,14 @@
+
+"""
+patterns.py - Material Library Registry
+
+This module acts as a polymorphic repository for texture definitions. 
+Every class acts as a plug-and-play material socket implementing three required methods:
+1. get_css_rules()         -> Emits styling rules for the SVG <style> container.
+2. get_xml_defs()          -> Emits vector gradient, pattern, or shader macros.
+3. evaluate_pixel_class()  -> Coordinates coordinate-aware cell class routing.
+"""
+
 import math
 import random
 
@@ -113,3 +124,148 @@ class GoldHexMaterial:
         
     def evaluate_pixel_class(self, c, r, cols, rows):
         return "hex-wire" # Uniform class mapping across the mesh geometric polygons
+
+
+class ConcreteMaterial:
+    """[Abstract Blueprint] Tactile industrial aggregate cement finish."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "concrete-mat-fallback"
+
+
+class ObsidianMaterial:
+    """[Abstract Blueprint] Deep vitreous volcanic glass sheen."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "obsidian-mat-fallback"
+
+
+class WalnutMaterial:
+    """[Abstract Blueprint] Organic flowing architectural hardwood woodgrain."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "walnut-mat-fallback"
+
+
+class FrostedGlassMaterial:
+    """[Abstract Blueprint] Translucent dithered glassmorphic diffusion matrix."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "frosted-glass-mat-fallback"
+
+
+class DichroicGlassMaterial:
+    """[Abstract Blueprint] Multi-chromatic light-splitting polarization surface."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "dichroic-glass-mat-fallback"
+
+
+class SubwayTileMaterial:
+    """[Abstract Blueprint] Interlocking offset geometric running-bond tile grid."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "subway-tile-mat-fallback"
+
+
+class IridescentWhiteMaterial:
+    """[Abstract Blueprint] Pearlescent, shimmering pearl-essence light strike."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "iridescent-white-mat-fallback"
+
+
+class WaterMaterial:
+    """[Abstract Blueprint] Caustic, fluid mathematical liquid ripple refraction."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "water-mat-fallback"
+
+
+class PearlescentMaterial:
+    """[Abstract Blueprint] Soft chromatic lustre shifting shell finish."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "pearlescent-mat-fallback"
+
+
+class GinghamMaterial:
+    """[Abstract Blueprint] Crossed intersecting checks and transparent weave tints."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "gingham-mat-fallback"
+
+
+class CrumbledPaperMaterial:
+    """[Abstract Blueprint] High-frequency geometric crease shadow heightmap."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "crumbled-paper-mat-fallback"
+
+
+class NeonYellowMaterial:
+    """[Abstract Blueprint] Piercing high-visibility radioactive tactical blast finish."""
+    def get_css_rules(self) -> str:
+        return ""
+
+    def get_xml_defs(self) -> str:
+        return ""
+        
+    def evaluate_pixel_class(self, c: int, r: int, cols: int, rows: int) -> str:
+        return "neon-yellow-mat-fallback"
+
