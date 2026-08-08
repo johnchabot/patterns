@@ -77,6 +77,79 @@ class HoneycombPatternMaterial:
         return "honeycomb-canvas-fill"
 
 
+class StarrySkyMaterial:
+    """Pattern 7: Procedural Starry Sky Void via High-Contrast Noise Matrix"""
+    
+    def get_css_rules(self):
+        return """
+            .starry-sky-void {
+                fill: #000000;              /* Absolute deep-space backing black */
+                filter: url(#starry-sky);   /* Apply the GPU-accelerated star generator */
+            }
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- STARRY SKY SHADER: High-frequency noise squeezed through an isolation matrix -->
+    <filter id="starry-sky" x="0%" y="0%" width="100%" height="100%">
+      <!-- Pass 1: Generate high-frequency digital noise mapping -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.2" numOctaves="1" result="raw-noise" />
+      
+      <!-- Pass 2: Color Matrix isolation. 
+                   Squeezes the red, green, and blue values drastically (x9 multiplier, -4 offset) 
+                   to collapse the broad noise fields into tiny, piercing white starlight pins. -->
+      <feColorMatrix in="raw-noise" type="matrix"
+                     values="0 0 0 9 -4
+                             0 0 0 9 -4
+                             0 0 0 9 -4
+                             0 0 0 0 1" />
+    </filter>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "starry-sky-void"
+
+
+class ERDLCamoMaterial:
+    """Pattern 8: GPU-Driven ERDL Camouflage via Discrete Channel Slicing Matrices"""
+    
+    def get_css_rules(self):
+        return """
+            .erdl-camo-canvas {
+                fill: #000000;              /* Fallback foundation base */
+                filter: url(#erdl-camo);    /* Execute the procedural channel shader */
+            }
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- ERDL CAMOUFLAGE SHADER LAYER -->
+    <filter id="erdl-camo" x="0%" y="0%" width="100%" height="100%">
+      <!-- Pass 1: Create an organic, flowing mathematical landscape baseline -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="base-noise"/>
+      
+      <!-- Pass 2: Quantization. Slice the continuous gradient channels into discrete color index bands -->
+      <feComponentTransfer in="base-noise" result="indexed-bands">
+        <feFuncR type="discrete" tableValues="0 0 1"/>
+        <feFuncG type="discrete" tableValues="0 0 0 1 1"/>
+        <feFuncB type="discrete" tableValues="0 1"/>
+      </feComponentTransfer>
+      
+      <!-- Pass 3: Isolate channel distributions to prepare for final color mapping -->
+      <feColorMatrix in="indexed-bands" result="isolated-channels"
+                     values="1  0 0 0 0
+                            -1  1 0 0 0
+                            -1 -1 1 0 0
+                             0  0 0 0 1"/>
+                             
+      <!-- Pass 4: The Palette Transformation. Maps the isolated channel segments 
+                   directly to classic organic ERDL woodland camo color values. -->
+      <feColorMatrix in="isolated-channels"
+                     values="-.08  .42  .09 0 .08
+                             -.17  .35 -.08 0 .17
+                             -.08  .15 -.04 0 .08
+                              0    0     0    0 1"/>
+    </filter>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "erdl-camo-canvas"
 
 
 
@@ -124,6 +197,79 @@ class GoldHexMaterial:
         
     def evaluate_pixel_class(self, c, r, cols, rows):
         return "hex-wire" # Uniform class mapping across the mesh geometric polygons
+
+
+class HilroyWasHereMaterial:
+    """Pattern 9: Hilroy Fine-Ruled Notebook Paper Alignment Grid"""
+    
+    def get_css_rules(self):
+        return """
+            .hilroy-paper-canvas {
+                fill: url(#hilroy-ruled-lines); /* Apply the infinite linear rule tile */
+                opacity: 0.8;                   /* Enforce the requested 80% canvas transparency */
+            }
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- HILROY GRID ENGINE: Seamless 20px repeating horizontal notebook rule tiles -->
+    <pattern id="hilroy-ruled-lines" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <!-- Base padding background tone block -->
+      <rect width="20" height="20" fill="#E5E5F7" />
+      
+      <!-- 1px precision horizontal rule line tracking your exact CSS color matrix -->
+      <line x1="0" y1="0" x2="20" y2="0" stroke="#444CF7" stroke-width="1" />
+    </pattern>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "hilroy-paper-canvas"
+
+class MarrakeshMaterial:
+    """Pattern 10: Divya Manian's Marrakesh Concentric Mosaic Tiling System"""
+    
+    def get_css_rules(self):
+        return """
+            .marrakesh-canvas {
+                fill: url(#marrakesh-mosaic-tile); /* Bind canvas background to our structural mesh */
+            }
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- MARRAKESH GRID PIPELINE: Concentric radial ring networks stacked over a 0,0 alignment axis -->
+    <pattern id="marrakesh-mosaic-tile" x="0" y="0" width="90" height="90" patternUnits="userSpaceOnUse">
+      <!-- Foundational bright white grout substrate layer -->
+      <rect width="90" height="90" fill="#ffffff" />
+      
+      <!-- Layer 01: Core Geometric Grid Repetition Loops -->
+      <!-- Emulates the 30px x 30px micro-cell star groupings across the 90px master patch -->
+      <pattern id="marrakesh-sub-star" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+        <!-- 9px focused central midnightblue circle focal point -->
+        <circle cx="0" cy="0" r="9" fill="midnightblue" />
+        <circle cx="30" cy="0" r="9" fill="midnightblue" />
+        <circle cx="0" cy="30" r="9" fill="midnightblue" />
+        <circle cx="30" cy="30" r="9" fill="midnightblue" />
+      </pattern>
+      <rect width="90" height="90" fill="url(#marrakesh-sub-star)" />
+
+      <!-- Layer 02: Concentric Ripple Rings (The 90px x 90px repeating-radial core) -->
+      <!-- Simulates the nested geometric wave pulses pulsing outward from center coordinates -->
+      <!-- Ring 1 (0px to 4px) -->
+      <circle cx="0" cy="0" r="4" fill="none" stroke="midnightblue" stroke-width="4" />
+      <!-- Ring 2 (21px to 25px) -->
+      <circle cx="0" cy="0" r="23" fill="none" stroke="midnightblue" stroke-width="4" />
+      
+      <!-- Mirror repeat anchors across the 90px grid boundary matrix corners to ensure perfect seaming -->
+      <circle cx="90" cy="0" r="4" fill="none" stroke="midnightblue" stroke-width="4" />
+      <circle cx="90" cy="0" r="23" fill="none" stroke="midnightblue" stroke-width="4" />
+      <circle cx="0" cy="90" r="4" fill="none" stroke="midnightblue" stroke-width="4" />
+      <circle cx="0" cy="90" r="23" fill="none" stroke="midnightblue" stroke-width="4" />
+      <circle cx="90" cy="90" r="4" fill="none" stroke="midnightblue" stroke-width="4" />
+      <circle cx="90" cy="90" r="23" fill="none" stroke="midnightblue" stroke-width="4" />
+    </pattern>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "marrakesh-canvas"
+
+
 
 
 class ConcreteMaterial:
