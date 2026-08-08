@@ -12,6 +12,55 @@ Every class acts as a plug-and-play material socket implementing three required 
 import math
 import random
 
+class CodePage437ShadeMaterial:
+    """Pattern 15: IBM PC Code Page 437 Hardware-Level Text-Mode Stipple Matrix"""
+    
+    def get_css_rules(self):
+        return """
+            /* Enforce sharp, aliased retro text-mode character cells */
+            rect { shape-rendering: crispEdges; }
+            
+            .cp437-light-void  { fill: #000000; } /* Monochromatic background layer */
+            
+            /* The three hardware stipple selections highlighted in your layout map */
+            .cp437-light-shade  { fill: url(#cp437-stipple-25); }  /* Byte 0xB0 (176) */
+            .cp437-medium-shade { fill: url(#cp437-stipple-50); }  /* Byte 0xB1 (177) */
+            .cp437-dark-shade   { fill: url(#cp437-stipple-75); }  /* Byte 0xB2 (178) */
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- IBM PC ROM FONT EMULATION: 4px x 4px Hardware Pixel Cells -->
+    
+    <!-- 1. LIGHT SHADE (0xB0 / 176) - Precise 25% Density Stipple Grid -->
+    <pattern id="cp437-stipple-25" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="1" height="1" fill="#ffffff" />
+      <rect x="2" y="2" width="1" height="1" fill="#ffffff" />
+    </pattern>
+
+    <!-- 2. MEDIUM SHADE (0xB1 / 177) - Precise 50% Density Checkerboard Matrix -->
+    <pattern id="cp437-stipple-50" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="2" height="2" fill="#ffffff" />
+      <rect x="2" y="2" width="2" height="2" fill="#ffffff" />
+    </pattern>
+
+    <!-- 3. DARK SHADE (0xB2 / 178) - Precise 75% Density Negative Inverse Grid -->
+    <pattern id="cp437-stipple-75" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="#ffffff" />
+      <rect x="0" y="0" width="1" height="1" fill="#000000" />
+      <rect x="2" y="2" width="1" height="1" fill="#000000" />
+    </pattern>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        """
+        Coordinates a multi-tier programmatic distribution.
+        Divides your canvas into three distinct bands to showcase each CP437 hardware tier.
+        """
+        fraction = c / cols
+        if fraction > 0.66: return "cp437-dark-shade"
+        if fraction > 0.33: return "cp437-medium-shade"
+        return "cp437-light-shade"
+
+
 
 class CarbonFiberMaterial:
     """Pattern 13: Technical Woven Carbon Fiber Composite Matrix"""
