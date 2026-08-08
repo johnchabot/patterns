@@ -50,6 +50,51 @@ class CarbonFiberMaterial:
     def evaluate_pixel_class(self, c, r, cols, rows):
         return "carbon-fiber-canvas"
 
+class PlinthTartanMaterial:
+    """Pattern 14: 7-Step Plinth Tartan Isometric 3D Diamond Grid"""
+    
+    def get_css_rules(self):
+        return """
+            .plinth-tartan-canvas {
+                fill: url(#plinth-tartan-mesh); /* Apply the 3D optical diamond layout mesh */
+            }
+        """
+
+    def get_xml_defs(self):
+        # We define a 100x100 master tile window to let the browser handle loop tiling on the GPU.
+        # Translating the sharp 14.286% step bands into clean, discrete vector shapes inside a 
+        # 45-degree rotated container replicates your original CSS logic with absolute precision.
+        return """    <!-- PLINTH TARTAN ENGINE: 7-Channel orthogonal stepping grids with alpha multiplication -->
+    <pattern id="plinth-tartan-mesh" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      
+      <!-- Layer 01: Opaque Base Diagonal Grid Steps (45-degree simulation tracking 1/7th scale widths) -->
+      <g stroke="none">
+        <rect x="0.00"   y="0" width="14.29" height="100" fill="rgb(252, 252, 252)" />
+        <rect x="14.29"  y="0" width="14.29" height="100" fill="rgb(246, 246, 246)" />
+        <rect x="28.57"  y="0" width="14.29" height="100" fill="rgb(241, 241, 241)" />
+        <rect x="42.86"  y="0" width="14.29" height="100" fill="rgb(235, 235, 235)" />
+        <rect x="57.14"  y="0" width="14.29" height="100" fill="rgb(235, 235, 235)" />
+        <rect x="71.43"  y="0" width="14.29" height="100" fill="rgb(224, 224, 224)" />
+        <rect x="85.72"  y="0" width="14.29" height="100" fill="rgb(218, 218, 218)" />
+      </g>
+
+      <!-- Layer 02: 46% Opacity Crossing Grid Steps (135-degree intersection simulation) -->
+      <g stroke="none" fill-opacity="0.46">
+        <rect x="0" y="0.00"   width="100" height="14.29" fill="rgb(159, 159, 159)" />
+        <rect x="0" y="14.29"  width="100" height="14.29" fill="rgb(165, 165, 165)" />
+        <rect x="0" y="28.57"  width="100" height="14.29" fill="rgb(171, 171, 171)" />
+        <rect x="0" y="42.86"  width="100" height="14.29" fill="rgb(178, 178, 178)" />
+        <rect x="0" y="57.14"  width="100" height="14.29" fill="rgb(184, 184, 184)" />
+        <rect x="0" y="71.43"  width="100" height="14.29" fill="rgb(190, 190, 190)" />
+        <rect x="0" y="85.72"  width="100" height="14.29" fill="rgb(196, 196, 196)" />
+      </g>
+    </pattern>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "plinth-tartan-canvas"
+
+
+
 
 
 class CamouflageMaterial:
