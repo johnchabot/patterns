@@ -88,10 +88,23 @@ class UnifiedCanvasEngine:
             # --- ROUTE C: HARDWARE-ACCELERATED NATIVE SVG TILED FILL ---
             elif layout_mode == "TILED_FILL":
                 cls = material_instance.evaluate_pixel_class(0, 0, 1, 1)
-                f.write(f'    <!-- Single container canvas rectangle using the integrated background asset -->\n')
-                f.write(f'    <rect width="{self.width}" height="{self.height}" class="{cls}" />\n')
+                
+                # Check if we are running the technical carbon fiber material profile
+                if cls == "carbon-fiber-canvas":
+                    f.write(f'    <!-- Layer 01: Multi-Layered Woven Polymer Texture Background -->\n')
+                    f.write(f'    <rect width="{self.width}" height="{self.height}" class="carbon-fiber-canvas" />\n')
+                    f.write(f'    <!-- Layer 02: Center-Focused Ambient Occlusion Vignette Overlay -->\n')
+                    f.write(f'    <rect width="{self.width}" height="{self.height}" class="vignette-overlay" />\n')
+                elif cls == "brushed-steel-plate":
+                    # (Your existing brushed steel stacking layers remain safely intact here)
+                    f.write(f'    <rect width="{self.width}" height="{self.height}" class="brushed-steel-plate" />\n')
+                    f.write(f'    <rect width="{self.width}" height="{self.height}" class="brushed-grain-overlay" />\n')
+                else:
+                    # Fallback configuration pass for single-layer pattern fills
+                    f.write(f'    <rect width="{self.width}" height="{self.height}" class="{cls}" />\n')
 
             f.write('  </g>\n</svg>\n')
+
 
 # --- INITIALIZATION CONTROL LAYER ---
 if __name__ == "__main__":
