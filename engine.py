@@ -1,18 +1,5 @@
 # Add HoneycombPatternMaterial to your engine imports at the top
 from patterns import 
-
-
-
-
-
-
-
-
-
-
-
-
-
 import math
 from patterns import CamouflageMaterial, TarmacMaterial, GoldHexMaterial, HoneycombPatternMaterial
 
