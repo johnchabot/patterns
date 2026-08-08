@@ -16,7 +16,9 @@ Infinite Scale Without Code Bloat: If you want to add a fourth pattern (like a c
 
 Engine  
 - Single function call in a Python script, that effectively acts as a 2D or 3D asset compiler  
+ 2D objects and 3D objects are parsed using the exact same code engine paths. 2D is simply handled as a specialized, low-frequency 3D structure where the spatial coordinates align tightly along a single plane layer.
 - Dimensionally aware of geometry and context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates)  
+- Asset Compiler Engine. Python should only handle the execution mechanics (loops, projection math, XML assembly), while JSON holds the structural descriptors, vertex nodes, and boundary rules.
 
 Pattern Options
 - Obsidian
@@ -28,6 +30,7 @@ Pattern Options
 Cartesian Plane
 OR
 X,Y,Z 3D: Cube, Sphere, Hexagonal Prism.. even 4 Hexagonal Prisms, wow!
+
 - Pure math frequencies rather than tracking local 2D pixel coordinates. When the top face meets the right face along the cube edge, their shared points have matching 3D values. The modulo checks evaluate identically, causing the graph paper lines to seamlessly wrap around the corners.
 
 Output
