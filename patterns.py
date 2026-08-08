@@ -12,6 +12,46 @@ Every class acts as a plug-and-play material socket implementing three required 
 import math
 import random
 
+
+class CarbonFiberMaterial:
+    """Pattern 13: Technical Woven Carbon Fiber Composite Matrix"""
+    
+    def get_css_rules(self):
+        return """
+            .carbon-fiber-canvas {
+                fill: url(#carbon-fiber-weave); /* Bind the canvas surface to our polymer mesh */
+            }
+            .vignette-overlay {
+                fill: url(#center-ambient-vignette); /* Multiplies deep shadows over the composite canvas */
+                mix-blend-mode: multiply;
+            }
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- 1. CARBON FIBER ENGINE: 6px x 6px Repeating Orthogonal Micro-Weave Tiles -->
+    <pattern id="carbon-fiber-weave" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <!-- Foundational solid dark polymer backing plate: rgb(33,33,33) -->
+      <rect width="6" height="6" fill="rgb(33,33,33)" />
+      
+      <!-- Primary Diagonal Thread Group (45-degree micro-grain matching your 5px/6px CSS intervals) -->
+      <!-- We render these as clean, crisp vector paths scaled to your transparent break boundaries -->
+      <path d="M0,6 L6,0 M-3,3 L3,-3 M3,9 L9,3" stroke="rgb(56,56,56)" stroke-width="1.2" />
+      
+      <!-- Secondary Intersecting Structural Weave (135-degree micro-lines matching your 1px/4px steps) -->
+      <path d="M0,0 L6,6 M-3,3 L3,9 M3,-3 L9,3" stroke="rgb(33,33,33)" stroke-width="0.8" />
+    </pattern>
+
+    <!-- 2. LIGHT COHERENCE SHADER: Center-focused radial gradient vignette -->
+    <radialGradient id="center-ambient-vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%"   stop-color="rgb(33,33,33)" stop-opacity="0.0" />
+      <stop offset="100%" stop-color="rgb(33,33,33)" stop-opacity="1.0" />
+    </radialGradient>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "carbon-fiber-canvas"
+
+
+
 class CamouflageMaterial:
     """Pattern 1: Pre-v3 Digital Disruptive Camouflage Matrix"""
     def get_css_rules(self):
@@ -75,6 +115,94 @@ class HoneycombPatternMaterial:
     def evaluate_pixel_class(self, c, r, cols, rows):
         # Unused by the tiled fill mode, but kept for polymorphic blueprint parity
         return "honeycomb-canvas-fill"
+
+class TableclothMaterial:
+    """Pattern 12: Gingham Picnic Tablecloth Intersecting Checkerboard Grid"""
+    
+    def get_css_rules(self):
+        return """
+            .tablecloth-canvas {
+                fill: url(#tablecloth-gingham-weave); /* Bind the layout background to our checkerboard tile */
+            }
+        """
+
+    def get_xml_defs(self):
+        return """    <!-- GINGHAM ENGINE: Seamless 50px repeating crossing textile weave structures -->
+    <pattern id="tablecloth-gingham-weave" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <!-- Foundational crisp bleached white linen cloth layer -->
+      <rect width="50" height="50" fill="#ffffff" />
+      
+      <!-- Vertical red thread block: 25px wide (50% coverage) at 50% opacity -->
+      <rect x="0" y="0" width="25" height="50" fill="rgb(200,0,0)" fill-opacity="0.5" />
+      
+      <!-- Horizontal red thread block: 25px high (50% coverage) at 50% opacity -->
+      <rect x="0" y="0" width="50" height="25" fill="rgb(200,0,0)" fill-opacity="0.5" />
+    </pattern>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "tablecloth-canvas"
+
+
+
+
+
+class MadrasMaterial:
+    """Pattern 11: Divya Manian's Madras Plaid Asymmetric Textile Matrix"""
+    
+    def get_css_rules(self):
+        return """
+            .madras-fabric-canvas {
+                fill: url(#madras-plaid-weave); /* Bind the layout background to our textile tile */
+            }
+        """
+
+    def get_xml_defs(self):
+        # We define a 200x200 master bounding box to account for the asymmetric steps.
+        # Translating the 45-degree and 135-degree bands into intersecting orthogonal layers 
+        # inside a rotated container is the cleanest way to preserve vector alignment.
+        return """    <!-- MADRAS TEXTILE ENGINE: Layered asymmetric strip networks with alpha blending -->
+    <pattern id="madras-plaid-weave" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <!-- Foundational base cloth tone layer: hsl(34, 53%, 82%) -->
+      <rect width="200" height="200" fill="hsl(34, 53%, 82%)" />
+      
+      <!-- Layer 01: Horizontal Stripe Thread Array -->
+      <!-- Mapping the exact color bands and transparent steps along the X-Axis -->
+      <g fill-opacity="0.5">
+        <!-- Deep Navy Striations: hsla(197, 62%, 11%, 0.5) -->
+        <rect x="5"   y="0" width="5"   height="200" fill="hsl(197, 62%, 11%)" />
+        <rect x="40"  y="0" width="10"  height="200" fill="hsl(197, 62%, 11%)" />
+        <rect x="120" y="0" width="20"  height="200" fill="hsl(197, 62%, 11%)" />
+        
+        <!-- Muted Crimson Striations: hsla(5, 53%, 63%, 0.5) -->
+        <rect x="35"  y="0" width="5"   height="200" fill="hsl(5, 53%, 63%)" />
+        <rect x="60"  y="0" width="10"  height="200" fill="hsl(5, 53%, 63%)" />
+        <rect x="90"  y="0" width="20"  height="200" fill="hsl(5, 53%, 63%)" />
+        
+        <!-- Bright Ochre Gold Striations: hsla(35, 91%, 65%, 0.5) -->
+        <rect x="70"  y="0" width="10"  height="200" fill="hsl(35, 91%, 65%)" />
+      </g>
+
+      <!-- Layer 02: Vertical Stripe Thread Array -->
+      <!-- Crossing the grid symmetrically to build the interwoven over-under plaid texture -->
+      <g fill-opacity="0.5">
+        <!-- Deep Navy Striations -->
+        <rect x="0" y="5"   width="200" height="5"   fill="hsl(197, 62%, 11%)" />
+        <rect x="0" y="40"  width="200" height="10"  fill="hsl(197, 62%, 11%)" />
+        <rect x="0" y="140" width="200" height="20"  fill="hsl(197, 62%, 11%)" />
+        
+        <!-- Muted Crimson Striations -->
+        <rect x="0" y="35"  width="200" height="5"   fill="hsl(5, 53%, 63%)" />
+        <rect x="0" y="60"  width="200" height="10"  fill="hsl(5, 53%, 63%)" />
+        <rect x="0" y="90"  width="200" height="20"  fill="hsl(5, 53%, 63%)" />
+        
+        <!-- Bright Ochre Gold Striations -->
+        <rect x="0" y="70"  width="200" height="10"  fill="hsl(35, 91%, 65%)" />
+      </g>
+    </pattern>"""
+
+    def evaluate_pixel_class(self, c, r, cols, rows):
+        return "madras-fabric-canvas"
+
 
 
 class StarrySkyMaterial:
