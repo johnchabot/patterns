@@ -4,6 +4,11 @@ Creates a pre-set pattern over a 2D canvas or 3D object asset compiler
 ### FUNCTION
 name.py (input) (output) --flags
 
+python matrix_painter.py --style WALLPAPER --output soft_wallpaper.svg
+python matrix_painter.py --style CAMO --stochastic --output random_camo.svg
+
+
+
 ### ENGINE (engine.py):
 * This complete Python script inspects the incoming data structure. It automatically detects the type of object being constructed (2D Grid vs. 3D Model) and updates its parsing routines, style blocks, and XML layout tags accordingly.  
 * Clean engine architecture offering Infinite Scale Without Code Bloat (Engine.py; Easily-expanded Patterns.py)  
@@ -19,34 +24,70 @@ name.py (input) (output) --flags
 * Semantic DOM Sorting over Hardcoded Coordinates  
 * Vector Scaling with Pure Integrity: Because the math projects coordinates as relative vectors rather than fixed rasterized pixels, the entire 3D structure preserves absolute vector clarity. You can scale the browser layout window infinitely, and the projected vertices, crisp polygon joins (stroke-linejoin: round), and volumetric face shapes will remain perfectly sharp.
 * The Canvas Driver: The core Python script acts as an asset compiler rather than a flat image renderer. It is entirely aware of the dimensional geometry context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates).
- 
+Parametric Cyclic Bézier Spline Engine
+
 ### PATTERNS (patterns.py)
 Material Library
 | Name | Types   | Notes    |
 | :---:   | :---: | :---: |
-| Tarmac | NOT BUILD | fds |
+| Camouflage  | ERDL camouflage, pre_v3_digital_camouflage   | dynamic, tactile, textured digital camouflage matrices multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds), inject hardware-accelerated noise recipes  |
+| Hexagonal Grid | ds | hexagons to catch specular light paths |
+| Paper | Construction grid; Rough   | 283   |
+| Hilroy Paper | Construction grid; Rough   | 283   |
+| Cotton Weave | cdc | adsads |
+| Marrakesh by Divya Manian | cdc | adsads |
+| Madras by Divya Manian | cdc | adsads |
+| Plinth Tartan or Isometric Gingham | cdc | adsads |
+| Carbon Fiber | cdc | adsads |
+| Madras by Divya Manian | cdc | adsads |
+| Code Page 437 ROM ░░░░░ | sffs | From a programmatic texture engine perspective, this is a brilliant conceptual input. It is the absolute digital symbol for ordered dithering, frequency attenuation, and procedural density masking. |
+| Starry Sky | cdc |  High-frequency feTurbulence noise field, squeezes the color channels through a high-contrast feColorMatrix calculation to isolate single sharp pixels, creating a scattered field of bright white stars over an absolute black void |
+| Stainless Steel | fsddsf | eates the optical illusion of chrome-like metal reflections catching a hard light source |
+| Brushed Stele | sfdfsd | This creates a realistic brushed steel grain that catches light like real metal. |
+| Repetitive Custom Patterns | Quadrant | 283   |
+| Tarmac | NOT BUILD | Weathered Industrial Road Surface |
 | Obsidian | NOT BUILT | dsa |
 | Walnut | NOT BUILT | dsa |
 | Frosted Glass | NOT BUILT | dsa |
 | Dichroic Glass | NOT BUILT | dsa |
 | Subway Tile | NOT BUILT | dsa |
-
 | Water | NOT BUILT | dsa |
 | Pearlescent | NOT BUILT | dsa |
-| Ginham | NOT BUILT | dsa |
+| Gingham Picnic Tablecloth | NOT BUILT | dsa |
 | Subway Tile | NOT BUILT | dsa |
-
 | Crumpled Paper | NOT BUILT | dsa |
 | Neon Yellow | NOT BUILT | dsa |
-
 | IridescentWhiteMaterial | NOT BUILT | dsa |
-| Camouflage  | pre_v3_digital_camouflage   | dynamic, tactile, textured digital camouflage matrices multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds), inject hardware-accelerated noise recipes  |
-| Hexagonal Grid | ds | hexagons to catch specular light paths |
-| Paper | Construction grid; Rough   | 283   |
-| Cotton Weave | cdc | adsads |
-| Stainless Steel | fsddsf | eates the optical illusion of chrome-like metal reflections catching a hard light source |
-| Brushed Stele | sfdfsd | This creates a realistic brushed steel grain that catches light like real metal. |
-| Repetitive Custom Patterns | Quadrant | 283   |
+| Single Image Random Dot Stereogram (SIRDS) | |
+
+
+SPRAYS
+1. Digital Airbrush (Gaussian/Normal): (Smooth, mist-like fading edges), The Math: Generates a random angle uniformly between \(0\), The Visual: This concentrates particles at the origin and creates a smooth, mist-like gradient fade toward the edges, matching the look of a real pneumatic airbrush
+2. Targeted Splatter (Inverse Power/Exponential): (Dense core, sudden violent splatter flecks), The Math: Uses an Exponential Decay or Inverse Square distance filter. The majority of points are clamped tightly to the center core, but a secondary high-velocity threshold calculation forces a few random particles to burst outward at extreme distances. The Visual: This forms a solid, heavy paint hit at the center point, surrounded by a ring of chaotic, high-velocity impact splatters.
+
++
+The Core Quadrant-Shuffling Engine Mode + Symmetric Boundary Shield + Zero Cut Motifs + Randomized Reshuffle (Stochastic Shuffling)
+Integrating Shuffling Modes Directly into JSON Configuration
+This is an incredibly rich extension to the Procedural Multi-Pass Shuffling Engine. By injecting fresh geometric layers—specifically organic Bézier-curved shapes and high-frequency stipple spray patterns—into each quadrant before executing the next positional shuffle, you are building an authentic Layer-Accumulation Vector Texture Engine.
+
+The "Potato" Shape (Continuous Bézier Curves)
+The "Spray" Pattern (Stipple Particle Clouds)
+Layer Accumulation Effect:
+Absolute Edge Protection:
+
+COLORS
+Wong Color Palette, specifically engineered in computational biology and data science to guarantee absolute maximum visual contrast and accessibility (Color Vision Deficiency / Colorblind safety)
+Golden
+Neon Yellow
+White
+
+The Math-First Approach: By leaning heavily on clever geometry concepts—like the Symmetric Boundary Shield, Cyclic Bézier tangents, Polar coordinates, and SIRDS horizontal link shifts—we kept the code fast and elegant, offloading the heavy rendering tasks natively to the hardware.
+
+/quadrant-shuffle-engine
+ │
+ ├── 1. manifest.json      (The Shield Rules & Pass Configuration) manifest.json (The Pipeline Configuration Blueprint)
+ ├── 2. matrix_painter.py  (The Core Multi-Pass Shuffle Compiler) matrix_painter.py (The Structural Asset Compiler Engine)
+ └── 3. style_registry.py  (The Clean CSS and Color Token Palettes) style_registry.py (The Modern Palette & CSS Storage)
 
 ### SHAPES (shapes.json)
 | Name | Types   | Notes    |
