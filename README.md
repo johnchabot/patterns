@@ -4,24 +4,7 @@ Creates a pre-set pattern over a 2D canvas or 3D object asset compiler
 ### FUNCTION
 name.py (input) (output) --flags
 
-### 2D PATTERNS
-| Name | Types   | Notes    |
-| :---:   | :---: | :---: |
-| Camouflage  | pre_v3_digital_camouflage   | dynamic, tactile, textured digital camouflage matrices multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds), inject hardware-accelerated noise recipes  |
-| Hexagonal Grid | ds | hexagons to catch specular light paths |
-| Paper | Construction grid; Rough   | 283   |
-| Cotton Weave | cdc | adsads |
-| Stainless Steel | fsddsf | eates the optical illusion of chrome-like metal reflections catching a hard light source |
-| Brushed Stele | sfdfsd | This creates a realistic brushed steel grain that catches light like real metal. |
-| Repetitive Custom Patterns | Quadrant | 283   |
-
-### 3D SHAPES
-| Name | Types   | Notes    |
-| :---:   | :---: | :---: |
-| Cube  | test   | It's a cube  |
-| Hexagonal Prism | Regular, Gem, Garage | 283   |
-
-### ENGINE:
+### ENGINE (engine.py):
 * This complete Python script inspects the incoming data structure. It automatically detects the type of object being constructed (2D Grid vs. 3D Model) and updates its parsing routines, style blocks, and XML layout tags accordingly.  
 * Clean engine architecture offering Infinite Scale Without Code Bloat (Engine.py; Easily-expanded Patterns.py)  
 * You feed it structural data, and it decides whether to route that data through a Coordinate Projection Engine or a Pixel/Grid Map Engine  
@@ -30,14 +13,47 @@ name.py (input) (output) --flags
   * Decoupled Layout Data: If you want to change a cube into a hexagonal prism, you do not modify a single line of your Python codebase. You simply feed the engine a different JSON schema profile.
   * Declarative Seam Schemas: Seam logic requires identifying matching boundaries. JSON allows you to map explicit coordinate relationships (e.g., "Edge A of Face 1 connects to Edge C of Face 5") as simple key-value pairs that the Python engine can easily parse.
   * Universal Compatibility: JSON maps directly to native Python dictionaries via the standard json library, allowing you to ingest complex network maps without any custom parsing scripts.
-
 * Dimensionally aware of geometry and context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates)   
 * Polymorphic Blueprint Hooking: The engine code doesn’t care what pattern you are rendering anymore. It just expects that any material class passed to it implements three core methods: .get_css_rules(), .get_xml_defs(), and .evaluate_pixel_class().  
 * By decoupling the sorting system and passing that operational control entirely to your layer, the core Python script transitions into a pure, mathematical 3D Vertex Projection and Geometric Code Compiler.  
 * Semantic DOM Sorting over Hardcoded Coordinates  
 * Vector Scaling with Pure Integrity: Because the math projects coordinates as relative vectors rather than fixed rasterized pixels, the entire 3D structure preserves absolute vector clarity. You can scale the browser layout window infinitely, and the projected vertices, crisp polygon joins (stroke-linejoin: round), and volumetric face shapes will remain perfectly sharp.
 * The Canvas Driver: The core Python script acts as an asset compiler rather than a flat image renderer. It is entirely aware of the dimensional geometry context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates).
-* 
+ 
+### PATTERNS (patterns.py)
+Material Library
+| Name | Types   | Notes    |
+| :---:   | :---: | :---: |
+| Tarmac | NOT BUILD | fds |
+| Obsidian | NOT BUILT | dsa |
+| Walnut | NOT BUILT | dsa |
+| Frosted Glass | NOT BUILT | dsa |
+| Dichroic Glass | NOT BUILT | dsa |
+| Subway Tile | NOT BUILT | dsa |
+
+| Water | NOT BUILT | dsa |
+| Pearlescent | NOT BUILT | dsa |
+| Ginham | NOT BUILT | dsa |
+| Subway Tile | NOT BUILT | dsa |
+
+| Crumpled Paper | NOT BUILT | dsa |
+| Neon Yellow | NOT BUILT | dsa |
+
+| IridescentWhiteMaterial | NOT BUILT | dsa |
+| Camouflage  | pre_v3_digital_camouflage   | dynamic, tactile, textured digital camouflage matrices multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds), inject hardware-accelerated noise recipes  |
+| Hexagonal Grid | ds | hexagons to catch specular light paths |
+| Paper | Construction grid; Rough   | 283   |
+| Cotton Weave | cdc | adsads |
+| Stainless Steel | fsddsf | eates the optical illusion of chrome-like metal reflections catching a hard light source |
+| Brushed Stele | sfdfsd | This creates a realistic brushed steel grain that catches light like real metal. |
+| Repetitive Custom Patterns | Quadrant | 283   |
+
+### SHAPES (shapes.json)
+| Name | Types   | Notes    |
+| :---:   | :---: | :---: |
+| Cube  | test   | It's a cube  |
+| Hexagonal Prism | Regular, Gem, Garage | 283   |
+
 
 ### PATTERNS
 * Symmetric Boundary Shield, Cyclic Bézier tangents, Polar coordinates, and SIRDS horizontal link shifts—we kept the code fast and elegant, offloading the heavy rendering tasks natively to the hardware  
