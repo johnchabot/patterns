@@ -1,21 +1,14 @@
-# patterns - Procedural Vector Texture Recombobulator
-Creates a pre-set pattern over a 2D canvas or 3D object asset compiler
+# Procedural Vector Texture Recombobulator (PVTRNS)
+Apply repeating over a 2D canvas or 3D object asset compiler
 
-### FUNCTION
-name.py (input) (output) --flags
-
-python matrix_painter.py --style WALLPAPER --output soft_wallpaper.svg
-python matrix_painter.py --style CAMO --stochastic --output random_camo.svg
-
-
+### FUNCTION  
+python matrix_painter.py --style WALLPAPER --output soft_wallpaper.svg  
+python matrix_painter.py --style CAMO --stochastic --output random_camo.svg  
 
 ### ENGINE (engine.py):
-* This complete Python script inspects the incoming data structure. It automatically detects the type of object being constructed (2D Grid vs. 3D Model) and updates its parsing routines, style blocks, and XML layout tags accordingly.  
-* Clean engine architecture offering Infinite Scale Without Code Bloat (Engine.py; Easily-expanded Patterns.py)  
-* You feed it structural data, and it decides whether to route that data through a Coordinate Projection Engine or a Pixel/Grid Map Engine  
-* Asset Compiler Engine. Python should only handle the execution mechanics (loops, projection math, XML assembly), while JSON holds the structural descriptors, vertex nodes, and boundary rules.
-* JSON is the Perfect Choice for this Architecture:
-  * Decoupled Layout Data: If you want to change a cube into a hexagonal prism, you do not modify a single line of your Python codebase. You simply feed the engine a different JSON schema profile.
+* Clean engine architecture handing execution mechanics (loops, projection math, XML assembly), using JSON, which holds the structural descriptors, vertex nodes, and boundary rules
+* Inspects the incoming data structure, detects the type of object being constructed (2D Grid vs. 3D Model) and updates its parsing routines, style blocks, and XML layout tags accordingly.  
+
   * Declarative Seam Schemas: Seam logic requires identifying matching boundaries. JSON allows you to map explicit coordinate relationships (e.g., "Edge A of Face 1 connects to Edge C of Face 5") as simple key-value pairs that the Python engine can easily parse.
   * Universal Compatibility: JSON maps directly to native Python dictionaries via the standard json library, allowing you to ingest complex network maps without any custom parsing scripts.
 * Dimensionally aware of geometry and context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates)   
