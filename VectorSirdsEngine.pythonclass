@@ -1,0 +1,88 @@
+import math
+import random
+
+class VectorSirdsEngine:
+    """
+    Procedural SIRDS module that computes horizontal coordinate displacements 
+    based on geometric boundaries to generate hidden 3D vector autostereograms.
+    """
+    def __init__(self, width=800, height=800, eye_separation=140):
+        self.width = width
+        self.height = height
+        # Standard stereogram eye convergence step width in pixels
+        self.eye_sep = eye_separation 
+
+    def _raycast_is_inside_polygon(self, x, y, poly_points):
+        """Standard Ray-Casting algorithm to check if a coordinate lands inside a shape boundary."""
+        inside = False
+        n = len(poly_points)
+        p1x, p1y = poly_points[0]
+        for i in range(n + 1):
+            p2x, p2y = poly_points[i % n]
+            if y > min(p1y, p2y):
+                if y <= max(p1y, p2y):
+                    if x <= max(p1x, p2x):
+                        if p1y != p2y:
+                            xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                        if p1x == p2x or x <= xinters:
+                            inside = not inside
+            p1x, p1y = p2x, p2y
+        return inside
+
+    def generate_sirds_pass(self, bounds, active_shapes_vertices, palette_color, dot_density=400):
+        """
+        Computes a standalone vector SIRDS layer across a target quadrant's bounds.
+        Modulates horizontal spacing over detected shapes to bake hidden depth.
+        """
+        elements = []
+        y_step = 8  # Vertical resolution row step size
+        
+        # Iterate vertically through the quadrant rows
+        y = bounds["y_min"]
+        while y < bounds["y_max"]:
+            # Setup a link mapping array for horizontal point constraints
+            # Every pixel coordinate initially links directly back to its repeating eye-separation counterpart
+            same = [i for i in range(self.width)]
+            
+            # 1. THE STEREOGRAM DEPTH MATRIX PASS
+            for x in range(int(bounds["x_min"]), int(bounds["x_max"])):
+                # Evaluate if current coordinate is inside our pre-shuffled organic shape
+                is_inside = False
+                for poly in active_shapes_vertices:
+                    if self._raycast_is_inside_polygon(x, y, poly):
+                        is_inside = True
+                        break
+                
+                # If inside a shape, calculate an implicit 3D pop-out height value (Z)
+                z_depth = 0.45 if is_inside else 0.0
+                
+                # Compute the modulated stereogram separation offset
+                # High depth narrows the distance, forcing the eyes to converge closer
+                current_sep = int(self.eye_sep - (z_depth * 30))
+                
+                # Apply the constraint link across the horizontal row matrix
+                left_link = x - (current_sep // 2)
+                right_link = x + (current_sep - (current_sep // 2))
+                
+                if left_link >= 0 and right_link < self.width:
+                    same[right_link] = same[left_link]
+
+            # 2. THE STOCHASTIC VECTOR SPRAY PASS
+            # Generate the dot coordinates based on the calculated separation constraints
+            row_colors = [None] * self.width
+            for x in range(int(bounds["x_min"]), int(bounds["x_max"])):
+                if same[x] == x:
+                    # If it's a seed point, give it a random assignment based on your active color
+                    row_colors[x] = palette_color if random.random() > 0.4 else "transparent"
+                else:
+                    # Otherwise, inherit the color of its linked partner to lock in the stereogram loop
+                    row_colors[x] = row_colors[same[x]]
+
+                # Stream the calculated dot coordinate into the vector element buffer
+                if row_colors[x] != "transparent" and (x % 6 == 0) and random.random() > 0.3:
+                    r_size = random.choice([1.0, 1.5])
+                    elements.append(f'    <circle cx="{x}" cy="{y + random.uniform(-2, 2)}" r="{r_size}" fill="{row_colors[x]}" />')
+            
+            y += y_step
+            
+        return "\n".join(elements)
