@@ -1,29 +1,36 @@
 # patterns - Procedural Vector Texture Recombobulator
 Creates a pre-set pattern over a 2D canvas or 3D object asset compiler
 
+### FUNCTION
+name.py (input) (output) --flags
+
 ### 2D PATTERNS
 | Name | Types   | Notes    |
 | :---:   | :---: | :---: |
 | Camouflage  | pre_v3_digital_camouflage   | dynamic, tactile, textured digital camouflage matrices multi-frequency camouflage matrix (mixing macro-blobs and micro-flecks via quantization thresholds), inject hardware-accelerated noise recipes  |
 | Hexagonal Grid | ds | hexagons to catch specular light paths |
 | Paper | Construction grid; Rough   | 283   |
+| Cotton Weave | cdc | adsads |
+| Stainless Steel | fsddsf | eates the optical illusion of chrome-like metal reflections catching a hard light source |
+| Brushed Stele | sfdfsd | This creates a realistic brushed steel grain that catches light like real metal. |
 | Repetitive Custom Patterns | Quadrant | 283   |
 
-
-### X,Y,Z 3D SHAPES
+### 3D SHAPES
 | Name | Types   | Notes    |
 | :---:   | :---: | :---: |
 | Cube  | test   | It's a cube  |
 | Hexagonal Prism | Regular, Gem, Garage | 283   |
-| 4 Hexagonal Prisms | maybe | 283   |
-
-### INPUT:
 
 ### ENGINE:
 * This complete Python script inspects the incoming data structure. It automatically detects the type of object being constructed (2D Grid vs. 3D Model) and updates its parsing routines, style blocks, and XML layout tags accordingly.  
 * Clean engine architecture offering Infinite Scale Without Code Bloat (Engine.py; Easily-expanded Patterns.py)  
 * You feed it structural data, and it decides whether to route that data through a Coordinate Projection Engine or a Pixel/Grid Map Engine  
-* Asset Compiler Engine. Python should only handle the execution mechanics (loops, projection math, XML assembly), while JSON holds the structural descriptors, vertex nodes, and boundary rules.  
+* Asset Compiler Engine. Python should only handle the execution mechanics (loops, projection math, XML assembly), while JSON holds the structural descriptors, vertex nodes, and boundary rules.
+* JSON is the Perfect Choice for this Architecture:
+  * Decoupled Layout Data: If you want to change a cube into a hexagonal prism, you do not modify a single line of your Python codebase. You simply feed the engine a different JSON schema profile.
+  * Declarative Seam Schemas: Seam logic requires identifying matching boundaries. JSON allows you to map explicit coordinate relationships (e.g., "Edge A of Face 1 connects to Edge C of Face 5") as simple key-value pairs that the Python engine can easily parse.
+  * Universal Compatibility: JSON maps directly to native Python dictionaries via the standard json library, allowing you to ingest complex network maps without any custom parsing scripts.
+
 * Dimensionally aware of geometry and context it is handling (Flat 2D surface layouts vs. Projected 3D volumetric coordinates)   
 * Polymorphic Blueprint Hooking: The engine code doesn’t care what pattern you are rendering anymore. It just expects that any material class passed to it implements three core methods: .get_css_rules(), .get_xml_defs(), and .evaluate_pixel_class().  
 * By decoupling the sorting system and passing that operational control entirely to your layer, the core Python script transitions into a pure, mathematical 3D Vertex Projection and Geometric Code Compiler.  
@@ -37,13 +44,16 @@ Creates a pre-set pattern over a 2D canvas or 3D object asset compiler
 * Camo: Rather than lazily slapping a gray overlay on top of our shapes, the engine uses matrix math blending. The light levels from the heightmap actively transform the underlying camouflage vector colors. Whites stay bright, while shadows darken the green and brown color values symmetrically, preserving the exact color identity underneath.  
 
 ### 2D Cartesian Plane  
-* 2D is simply handled as a specialized, low-frequency 3D structure where the spatial coordinates align tightly along a single plane layer  
+* 2D is simply handled as a specialized, low-frequency 3D structure where the spatial coordinates align tightly along a single plane layer
+* treats a flat 2D plane as a deliberate, single-facet mathematical surface rather than just an arbitrary array of flat pixel blocks.
 * The script wraps the coordinates around a virtual cylinder or torus using trigonometry (\(\cos \)
 * Infinite Wrapping (2D mode): In the 2D pipeline, the code maps the columns and rows onto a circular coordinate path (math.cos(angle_x)). Because a circle has no beginning or end, the calculated noise patterns on the absolute left edge of your texture automatically blend with the numbers on the right edge, giving you an infinite tiling asset.
-* 
+* To map a 2D canvas using the 3D JSON format, you treat the Z-axis as a structural layer index (depth) or a height/displacement variable while utilizing multi-node parametric coordinates.
+* You can warp, skew, stretch, or rotate the 2D surface coordinate grid simply by modifying the vertex map values in the JSON file.
 
 ### 3D Vertex Projection, Texture Mapping and Coordinate Seaming
 * The Stacking Matrix: Authority over how the array elements inside cube_faces are prioritized. Because the compiler processes the faces linearly from the first item to the last item in the list, you can structure, shift, or completely re-sort that input array on your end to enforce the exact layout depth stacking order you want.
+* Instead of flatly drawing coordinates where shapes overwrite each other randomly, the Z-axis becomes an explicit layer index scale
 * The Cube Mapping Approach (Object-Space Grids): A cube has six flat faces. Instead of pasting a flat 2D image onto each face separately (which creates alignment errors at the corners), the engine queries the true 3D spatial coordinate \((X, Y, Z)\)
 * The Sphere Mapping Approach (Spherical Polar Projection): A sphere has no flat sides. To wrap grid lines cleanly around it, the engine translates 3D spatial points into Latitude (\(\phi \)
 * For 3D Objects (Cubes, Hexagonal Prisms, Spheres): The engine iterates through the geometry using the true 3D spatial positions of the points. Because the mathematical function evaluates seamlessly across 3D space, the pattern naturally flows around corners, from the top face down across the side facets, with absolute continuity  
