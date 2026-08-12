@@ -38,7 +38,9 @@ Frequency Separation Engine (Macro + Micro layers), the Quantization Pass, and g
 
 - Clean, human-readable, semantic .svg files (Semantic Shading via CSS Variables, The Depth Sort / Painter's Algorithm:, he Projection Matrix (3D to 2D):
 - (geometry separate from presentation by grouping shapes inside XML containers (<g>) and controlling colors and rendering profiles via modern embedded CSS classes)
-- accessible (soon), low-co2 
+- accessible (soon), low-co2
+
+- y leaning heavily on clever geometry concepts—like the Symmetric Boundary Shield, Cyclic Bézier tangents, Polar coordinates, and SIRDS horizontal link shifts—we kept the code fast and elegant, offloading the heavy rendering tasks natively to the hardware.
 
 [CAMOUFLAGE ENGINE CORE]
  │
