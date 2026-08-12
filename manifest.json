@@ -1,0 +1,19 @@
+{
+  "project_name": "procedural_matrix_shuffler",
+  "canvas_settings": {
+    "width": 800,
+    "height": 800,
+    "cell_spacing": 16
+  },
+  "shield_rules": {
+    "enforce_insulated_borders": true,
+    "center_safety_margin_cells": 2
+  },
+  "shuffle_mode": "planned_diagonal",
+  "pipeline_passes": [
+    {"pass_index": 0, "type": "SHAPE",    "points": 5, "scale": 0.85, "run_sirds": true},
+    {"pass_index": 1, "type": "AIRBRUSH", "density": 90, "scale": 35.0, "run_sirds": false},
+    {"pass_index": 2, "type": "SHAPE",    "points": 7, "scale": 0.60, "run_sirds": true},
+    {"pass_index": 3, "type": "SPLATTER", "density": 120, "scale": 15.0, "run_sirds": false}
+  ]
+}
