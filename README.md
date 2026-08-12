@@ -60,20 +60,22 @@ Material Library
 | IridescentWhiteMaterial | NOT BUILT | dsa |
 | Single Image Random Dot Stereogram (SIRDS) | |
 
-
 SPRAYS
 1. Digital Airbrush (Gaussian/Normal): (Smooth, mist-like fading edges), The Math: Generates a random angle uniformly between \(0\), The Visual: This concentrates particles at the origin and creates a smooth, mist-like gradient fade toward the edges, matching the look of a real pneumatic airbrush
 2. Targeted Splatter (Inverse Power/Exponential): (Dense core, sudden violent splatter flecks), The Math: Uses an Exponential Decay or Inverse Square distance filter. The majority of points are clamped tightly to the center core, but a secondary high-velocity threshold calculation forces a few random particles to burst outward at extreme distances. The Visual: This forms a solid, heavy paint hit at the center point, surrounded by a ring of chaotic, high-velocity impact splatters.
-
 +
-The Core Quadrant-Shuffling Engine Mode + Symmetric Boundary Shield + Zero Cut Motifs + Randomized Reshuffle (Stochastic Shuffling)
-Integrating Shuffling Modes Directly into JSON Configuration
-This is an incredibly rich extension to the Procedural Multi-Pass Shuffling Engine. By injecting fresh geometric layers—specifically organic Bézier-curved shapes and high-frequency stipple spray patterns—into each quadrant before executing the next positional shuffle, you are building an authentic Layer-Accumulation Vector Texture Engine.
 
 The "Potato" Shape (Continuous Bézier Curves)
 The "Spray" Pattern (Stipple Particle Clouds)
 Layer Accumulation Effect:
-Absolute Edge Protection:
+Absolute Edge Protection
+
+
+LAYOUT
+The Core Quadrant-Shuffling Engine Mode + Symmetric Boundary Shield + Zero Cut Motifs + Randomized Reshuffle (Stochastic Shuffling)
+Integrating Shuffling Modes Directly into JSON Configuration
+This is an incredibly rich extension to the Procedural Multi-Pass Shuffling Engine. By injecting fresh geometric layers—specifically organic Bézier-curved shapes and high-frequency stipple spray patterns—into each quadrant before executing the next positional shuffle, you are building an authentic Layer-Accumulation Vector Texture Engine.
+
 
 COLORS
 Wong Color Palette, specifically engineered in computational biology and data science to guarantee absolute maximum visual contrast and accessibility (Color Vision Deficiency / Colorblind safety)
@@ -82,12 +84,19 @@ Neon Yellow
 White
 
 The Math-First Approach: By leaning heavily on clever geometry concepts—like the Symmetric Boundary Shield, Cyclic Bézier tangents, Polar coordinates, and SIRDS horizontal link shifts—we kept the code fast and elegant, offloading the heavy rendering tasks natively to the hardware.
+Unlike random camouflage, which requires 4 to 8 passes to scramble chaotic noise, a luxury monogram needs perfect, deliberate symmetry. The passes map out like this:
 
 /quadrant-shuffle-engine
  │
  ├── 1. manifest.json      (The Shield Rules & Pass Configuration) manifest.json (The Pipeline Configuration Blueprint)
  ├── 2. matrix_painter.py  (The Core Multi-Pass Shuffle Compiler) matrix_painter.py (The Structural Asset Compiler Engine)
  └── 3. style_registry.py  (The Clean CSS and Color Token Palettes) style_registry.py (The Modern Palette & CSS Storage)
+
+1. Straight Repeat (Formal & Structured): Standard rectilinear mapping. The column spacing (\(X\)
+2. Diagonal / Offset Brick Repeat (The Classic Monogram): Alternating row interleaving. To create a perfect brick pattern, every odd-numbered row shifts horizontally by exactly half a column width.
+3. Diamond Lattice & Quatrefoils (Enclosed Heritage Geometry): 45-degree coordinate rotation mixed with a bounding lattice. A true Quatrefoil is constructed programmatically by combining a central square box with four overlapping border circles tracking the midpoints of the box edges.
+
+
 
 ### SHAPES (shapes.json)
 | Name | Types   | Notes    |
