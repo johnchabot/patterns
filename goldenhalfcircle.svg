@@ -1,33 +1,60 @@
-<svg xmlns="http://w3.org" viewBox="0 0 500 500" width="100%" height="100%">
+<svg xmlns="http://w3.org" viewBox="0 0 800 500" width="100%" height="100%">
   <defs>
-    <!-- Base Circular Gradient (Vibrant Neon Contrast) -->
-    <!-- The fx and fy variables shift the light source center to create dimension -->
-    <radialGradient id="coolShinyBase" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-      <stop offset="0%" stop-color="#00f6ff" />
-      <stop offset="40%" stop-color="#7000ff" />
-      <stop offset="100%" stop-color="#110033" />
+    <!-- Dark Ambient Canvas -->
+    <linearGradient id="canvas-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#111115" />
+      <stop offset="100%" stop-color="#050507" />
+    </linearGradient>
+
+    <!-- 3D Illusion Radial Gradient: Shifted center creates volumetric lighting -->
+    <radialGradient id="golden-3d-sphere" cx="420%" cy="330%" r="65%" fx="420%" fy="330%">
+      <!-- Off-center highlight -->
+      <stop offset="0%" stop-color="#fff8cc" />
+      <stop offset="15%" stop-color="#fcd86d" />
+      <!-- Rich mid-tone gold body -->
+      <stop offset="55%" stop-color="#c99827" />
+      <!-- Deep core shadow for curvature wrap -->
+      <stop offset="85%" stop-color="#735211" />
+      <!-- Ambient rim light reflection at the edge -->
+      <stop offset="100%" stop-color="#916f1f" />
     </radialGradient>
 
-    <!-- Overlay Gradient for the Glossy Shine Effect -->
-    <radialGradient id="glossShine" cx="35%" cy="35%" r="40%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    <!-- Ground Contact Shadow -->
+    <radialGradient id="ground-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(0, 0, 0, 0.75)" />
+      <stop offset="35%" stop-color="rgba(0, 0, 0, 0.4)" />
+      <stop offset="100%" stop-color="rgba(0, 0, 0, 0)" />
     </radialGradient>
   </defs>
 
-  <!-- Background Canvas -->
-  <rect width="100%" height="100%" fill="#0a0518" />
+  <style>
+    .canvas {
+      fill: url(#canvas-grad);
+    }
+    .ground-line {
+      stroke: #1b1b22;
+      stroke-width: 2px;
+    }
+    .shadow {
+      fill: url(#ground-shadow);
+    }
+    .golden-pile {
+      fill: url(#golden-3d-sphere);
+    }
+  </style>
 
-  <!-- Main Circular Object -->
-  <g id="shinyCircleGroup">
-    <!-- Base Color Layer -->
-    <circle id="baseLayer" cx="250" cy="250" r="180" fill="url(#coolShinyBase)" />
-    
-    <!-- Reflexive Shine Layer -->
-    <circle id="shineLayer" cx="250" cy="250" r="180" fill="url(#glossShine)" pointer-events="none" />
-    
-    <!-- Subtle Inner Edge Highlight -->
-    <circle id="edgeHighlight" cx="250" cy="250" r="179" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.25" />
-  </g>
+  <!-- Background Canvas -->
+  <rect width="800" height="500" class="canvas" />
+
+  <!-- Ground Plane Environment -->
+  <ellipse cx="400" cy="403" rx="220" ry="18" class="shadow" />
+  <line x1="100" y1="400" x2="700" y2="400" class="ground-line" />
+
+  <!-- 3D Illusion Golden Pile Semi-Circle -->
+  <!-- 
+    The shape remains a flat, clean 2D half-circle sitting on the y=400 ground line.
+    By shifting the radial gradient's focal point (fx, fy) upward and slightly to the right, 
+    the eye perceives a convex dome, turning a flat arc into a heavy, 3D physical object.
+  -->
+  <path d="M 250,400 A 150,150 0 0,1 550,400 Z" class="golden-pile" />
 </svg>
