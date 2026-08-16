@@ -1,55 +1,33 @@
-<svg xmlns="http://w3.org" viewBox="0 0 800 500" width="100%" height="100%">
+<svg xmlns="http://w3.org" viewBox="0 0 500 500" width="100%" height="100%">
   <defs>
-    <!-- Background Canvas Gradient -->
-    <linearGradient id="canvas-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#141419" />
-      <stop offset="100%" stop-color="#08080a" />
-    </linearGradient>
+    <!-- Base Circular Gradient (Vibrant Neon Contrast) -->
+    <!-- The fx and fy variables shift the light source center to create dimension -->
+    <radialGradient id="coolShinyBase" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+      <stop offset="0%" stop-color="#00f6ff" />
+      <stop offset="40%" stop-color="#7000ff" />
+      <stop offset="100%" stop-color="#110033" />
+    </radialGradient>
 
-    <!-- Simple Golden Pile Gradient -->
-    <linearGradient id="golden-pile-grad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#8a6f27" />
-      <stop offset="30%" stop-color="#caa33d" />
-      <stop offset="70%" stop-color="#f1cb65" />
-      <stop offset="100%" stop-color="#fff0aa" />
-    </linearGradient>
-
-    <!-- Soft Ground Shadow Gradient -->
-    <radialGradient id="ground-shadow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(0, 0, 0, 0.6)" />
-      <stop offset="100%" stop-color="rgba(0, 0, 0, 0)" />
+    <!-- Overlay Gradient for the Glossy Shine Effect -->
+    <radialGradient id="glossShine" cx="35%" cy="35%" r="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
     </radialGradient>
   </defs>
 
-  <style>
-    .canvas {
-      fill: url(#canvas-grad);
-    }
-    .ground-line {
-      stroke: #22222a;
-      stroke-width: 2px;
-      stroke-linecap: round;
-    }
-    .shadow {
-      fill: url(#ground-shadow);
-    }
-    .golden-pile {
-      fill: url(#golden-pile-grad);
-    }
-  </style>
-
   <!-- Background Canvas -->
-  <rect width="800" height="500" class="canvas" />
+  <rect width="100%" height="100%" fill="#0a0518" />
 
-  <!-- Ground Plane Environment -->
-  <ellipse cx="400" cy="405" rx="320" ry="15" class="shadow" />
-  <line x1="100" y1="400" x2="700" y2="400" class="ground-line" />
-
-  <!-- Golden Pile Semi-Circle -->
-  <!-- 
-    Draws a perfect half-circle sitting cleanly on the flat base line (y=400).
-    Starts at left edge (250, 400), arcs up to radius 150 (peak at 400, 250), 
-    reaches right edge (550, 400), and closes straight across the ground plane.
-  -->
-  <path d="M 250,400 A 150,150 0 0,1 550,400 Z" class="golden-pile" />
+  <!-- Main Circular Object -->
+  <g id="shinyCircleGroup">
+    <!-- Base Color Layer -->
+    <circle id="baseLayer" cx="250" cy="250" r="180" fill="url(#coolShinyBase)" />
+    
+    <!-- Reflexive Shine Layer -->
+    <circle id="shineLayer" cx="250" cy="250" r="180" fill="url(#glossShine)" pointer-events="none" />
+    
+    <!-- Subtle Inner Edge Highlight -->
+    <circle id="edgeHighlight" cx="250" cy="250" r="179" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.25" />
+  </g>
 </svg>
